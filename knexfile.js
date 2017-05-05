@@ -5,12 +5,13 @@ const config = require('./lib/config');
 module.exports = {
 
   development: {
-    client: '',
+    client: config.database.client,
     connection: {
+      database: config.database.database,
       host: config.database.host,
-      user: config.database.user,
       password: config.database.password,
-      database: config.database.database
+      port: config.database.port,
+      user: config.database.user,
     },
     migrations: {
       directory: 'lib/migrations',
@@ -19,12 +20,13 @@ module.exports = {
   },
 
   staging: {
-    client: '',
+    client: config.database.client,
     connection: {
+      database: config.database.database,
       host: config.database.host,
-      user: config.database.user,
       password: config.database.password,
-      database: config.database.database
+      port: config.database.port,
+      user: config.database.user,
     },
     migrations: {
       directory: 'lib/migrations',
@@ -33,12 +35,13 @@ module.exports = {
   },
 
   production: {
-    client: '',
+    client: config.database.client,
     connection: {
+      database: config.database.database,
       host: config.database.host,
-      user: config.database.user,
       password: config.database.password,
-      database: config.database.database
+      port: config.database.port,
+      user: config.database.user,
     },
     migrations: {
       directory: 'lib/migrations',

@@ -3,25 +3,20 @@
 const _ = require('lodash');
 const express = require('express');
 const Promise = require('bluebird');
-const git = require('git-rev');
 
 const config = require('./lib/config/env');
 const app = express();
 
 new Promise((resolve) => {
-  
-  // get the current git version and set it as config.VERSION
-  // good for cache-busting
-  git.tag((tag) => { config.VERSION = tag; resolve(); });
+  console.log('Initializing server.js...');
 
-}).then(() => {
   // Load initializers
   require('./lib/config/initializers');
 
   // Load Express config
   require('./lib/config/express')(app);
 
-  // Load the models
+  // Load models
   require('./lib/models');
 
   // Load middleware
@@ -32,7 +27,7 @@ new Promise((resolve) => {
 
   // start the app
   app.listen(app.get('port'), (server) => {
-    console.log('Server listening on port %d in %s mode', app.get('port'), app.get('env'));
+    console.log('Done!\n\nServer listening on port %d in %s mode', app.get('port'), app.get('env'));
   });
 
 });
